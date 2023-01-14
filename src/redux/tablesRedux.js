@@ -1,4 +1,7 @@
+
 // selectors
+
+export const getAllTables = state => state.tables;
 
 // actions
 const createActionName = actionName => `app/tables/${actionName}`;
@@ -12,10 +15,10 @@ const UPDATE_TABLES = createActionName('UPDATE_TABLES');
 export const updateTables = payload => ({ type: UPDATE_TABLES, payload});
 export const fetchTables = () => {
   return (dispatch) => {
-  fetch('http://localhost:3131/tables/1')
-  .then(res => res.json())
-  .then(tables => dispatch(updateTables(tables)));
-  }
+    fetch('http://localhost:3131/tables')
+      .then(res => res.json())
+      .then(tables => dispatch(updateTables(tables)))
+  };
 };
 
 // action creators

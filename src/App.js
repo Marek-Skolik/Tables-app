@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import Footer from './components/views/Footer/Footer';
 import Header from './components/views/Header/Header';
+import Table from './components/pages/Table/Table';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/table/:id" element={<Table />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

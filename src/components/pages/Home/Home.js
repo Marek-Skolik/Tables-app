@@ -9,12 +9,13 @@ const Home = () => {
 
     return (
     <div>
+      <h2>All tables:</h2>
       {tables.map((table) => {
         return (
           <div key={table.id} className='mt-3 py-3 d-flex align-items-end border-bottom border-2 border-secondary'>
             <h2 className='mr-3 mb-0'>Table {table.id}</h2>
             <p className='mx-3 mb-0'><strong>Status: </strong>{table.status}</p>
-            <Link className='ms-auto' to={`/table/${table.id}`}>
+            <Link className='ms-auto' to={"/table/" + table.id}>
               <Button>Show more</Button>
             </Link>
           </div>

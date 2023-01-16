@@ -12,25 +12,25 @@
       "id": "2",
       "status": "Free",
       "name": "Table 2",
-      "peopleAmount": 0,
-      "maxPeopleAmount": 3,
-      "bill": 0
+      "peopleAmount": "0",
+      "maxPeopleAmount": "3",
+      "bill": "0"
     },
     {
       "id": "3",
       "status": "Busy",
       "name": "Table 3",
-      "peopleAmount": 2,
-      "maxPeopleAmount": 3,
-      "bill": 45
+      "peopleAmount": "2",
+      "maxPeopleAmount": "4",
+      "bill": "45"
     },
     {
       "id": "4",
       "status": "Cleaning",
       "name": "Table 4",
-      "peopleAmount": 0,
-      "maxPeopleAmount": 3,
-      "bill": 0
+      "peopleAmount": "0",
+      "maxPeopleAmount": "5",
+      "bill": "0"
     }
   ]
 }

@@ -9,16 +9,14 @@ const Table = () => {
 
     const singleTable = useSelector (state => getTableById(state, id));
 
-
     return (
         <form>
             <h1 className='my-3'>
                 <strong>Table {singleTable.id}</strong>
             </h1>
-
             <div className='mt-4 d-flex w-50 align-items-center'>
                 <FormLabel className='mb-0 me-3'>
-                    <strong>Status: </strong>
+                    <strong>Status:</strong>
                 </FormLabel>
                 <FormSelect>
                     <option value='Free'>Free</option>;
@@ -32,21 +30,21 @@ const Table = () => {
                 <FormLabel className='mb-0 me-2'>
                     <strong>People:</strong>
                 </FormLabel>
-                <FormControl type='text' className='w-25 text-center'/>
+                <FormControl type="text" value={singleTable.peopleAmount} className='w-25 text-center'/>
                 <p className='mx-2 mb-0'>/</p>
-                <FormControl type='text' className='w-25 text-center'/>
+                <FormControl type="text" value={singleTable.maxPeopleAmount} className='w-25 text-center'/>
             </div>
                 <div className='mt-4 d-flex w-25 align-items-center'>
                 <FormLabel className='mb-0 me-4'>
                     <strong>Bill:</strong>
                 </FormLabel>
                 <p className='me-1 mb-0'>$</p>
-                <FormControl type='text' className='w-25 text-center'/>
+                <FormControl type="text" value={singleTable.bill} className='w-25 text-center'/>
                 </div>
             <Button type='submit' className='mt-4'>
                 Update
             </Button>
         </form>
-    )
+        );
 }
 export default Table;

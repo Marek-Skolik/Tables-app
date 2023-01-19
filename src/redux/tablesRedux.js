@@ -1,6 +1,7 @@
+import { API_URL } from "../config";
+
 
 // selectors
-
 export const getAllTables = state => state.tables;
 export const getTableById = ({ tables }, id) => tables.find((table) => table.id === id);
 
@@ -10,32 +11,32 @@ const createActionName = actionName => `app/tables/${actionName}`;
 // action names
 
 const UPDATE_TABLES = createActionName('UPDATE_TABLES');
-const EDIT_TABLES = createActionName('EDIT_TABLES');
+const EDIT_TABLE = createActionName('EDIT_TABLE');
 
 // action creators
 
 export const updateTables = payload => ({ type: UPDATE_TABLES, payload});
-export const editTables = payload => ({ type: EDIT_TABLES, payload});
+export const editTable = payload => ({ type: EDIT_TABLE, payload});
 export const fetchTables = () => {
   return (dispatch) => {
-    fetch('http://localhost:3131/tables')
+    fetch(API_URL)
       .then(res => res.json())
       .then(tables => dispatch(updateTables(tables)))
   };
 };
 
-export const editTableRequest = () => {
+export const editTableRequest = (tableData) => {
   return (dispatch) => {
     const options = {
       method: 'PUT',
       headers: {
-        'Content-Type': 'app/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(),
+      body: JSON.stringify(tableData),
     };
 
-    fetch('http://localhost:3131/tables' + '/table/' + options)
-    .then(() => dispatch(editTables()))
+    fetch(API_URL + tableData.id, options)
+      .then(() => dispatch(editTable(tableData)))
   };
 };
 
@@ -43,9 +44,17 @@ export const editTableRequest = () => {
 const tablesReducer = (statePart = [], action) => {
   switch (action.type) {
     case UPDATE_TABLES:
-      return [ ...action.payload]
-    case EDIT_TABLES:
-      return [ ...action.payload]
+      return [ ...action.payload];
+    case EDIT_TABLE:
+      return statePart.map((table) => {
+        if (table.id === action.payload.id) {
+          return {
+            ...table,
+            ...action.payload,
+          };
+        }
+        return table;
+      });
     default:
       return statePart;
   };

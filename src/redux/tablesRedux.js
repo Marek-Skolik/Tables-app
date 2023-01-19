@@ -24,18 +24,18 @@ export const fetchTables = () => {
   };
 };
 
-export const editTableRequest = (newTable) => {
+export const editTableRequest = () => {
   return (dispatch) => {
     const options = {
       method: 'PUT',
       headers: {
         'Content-Type': 'app/json'
       },
-      body: JSON.stringify(newTable),
+      body: JSON.stringify(),
     };
 
     fetch('http://localhost:3131/tables' + '/table/' + options)
-    .then(() => dispatch(editTables(newTable)))
+    .then(() => dispatch(editTables()))
   };
 };
 

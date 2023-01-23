@@ -1,8 +1,8 @@
-import jsonServer from 'json-server';
+import JsonServerRouter from 'json-server';
 import express from 'express';
 
 const app = express();
-const router = jsonServer.router('./db/app.json');
+const router = JsonServerRouter('./build/db/app.json');
 
 app.use('/api', router);
 
